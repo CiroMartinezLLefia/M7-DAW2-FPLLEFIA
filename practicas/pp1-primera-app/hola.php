@@ -1,7 +1,8 @@
 <?php
 
 function sayHello($name) {
-  echo "Hello $name!";
+  echo $name;
+  echo "<br>";
 }
 ?>
 
@@ -15,21 +16,22 @@ function sayHello($name) {
 
   <body>
     <header>
-      <img src="img/logo-fpllefia.jfif" alt="logo">
+      <img src="imagenes/logo-fpllefia.jfif" alt="logo">
       <h1>Módulo 7 - Práctica 1. Mi primera aplicación en PHP</h1>
     </header>
 
     <main>
-      <?php
-        sayHello('remote world');
-      ?>
-      <img src="img/yo.jpg" alt="yo">
-      <p>Texto</p>
+      <img src="imagenes/yo.jpg" alt="yo">
+      <p>Ciro Martinez</p>
+      <p>Explicacion</p> 
     </main>
 
     <footer>
-      <p>Ciro Martinez</p>
-      <p>2025-12-09</p>
+      <?php
+         sayHello('Ciro Martinez');
+         echo date('Y-d-m');
+      ?>
     </footer>
   </body>
+
 </html>
