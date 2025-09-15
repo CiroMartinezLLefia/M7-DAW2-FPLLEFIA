@@ -1,6 +1,6 @@
 <?php
 
-function sayHello($name) {
+function sayName($name) {
   echo $name;
   echo "<br>";
 }
@@ -12,6 +12,7 @@ function sayHello($name) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Visual Studio Remote :: PHP</title>
+    <link rel="stylesheet" href="style.css">
   </head>
 
   <body>
@@ -23,12 +24,17 @@ function sayHello($name) {
     <main>
       <img src="imagenes/yo.jpg" alt="yo">
       <p>Ciro Martinez</p>
-      <p>Explicacion</p> 
+      <p>
+        <?='
+        Esta aplicacion hace uso de PHP para mostrar datos dinamicos en una pagina web.
+        Utilizando la funcion echo para imprimir texto y variables en el HTML.
+        '?>
+      </p> 
     </main>
 
     <footer>
       <?php
-         sayHello('Ciro Martinez');
+         sayName('Ciro Martinez');
          echo date('Y-d-m');
       ?>
     </footer>
