@@ -6,92 +6,10 @@
     <title>Peliculas</title>
 </head>
 <body>
-    <style>   
-        body {
-            font-family: Arial, sans-serif;
-            background: #111;
-            color: #fff;
-            margin: 0;
-            padding: 20px;
-        }
-
-        h1 {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-
-        .peliculasCards {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 20px;
-        }
-
-        .peliculaCard {
-            position: relative;
-            overflow: hidden;
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.5);
-            cursor: pointer;
-            transition: transform 0.3s ease;
-        }
-
-        .peliculaCard:hover {
-            transform: scale(1.05);
-        }
-
-        .peliculaCard img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-        }
-
-        .peliculaCard .details {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: rgba(0,0,0,0.8);
-            padding: 15px;
-            text-align: center;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .peliculaCard:hover .details {
-            opacity: 1;
-        }
-
-        .peliculaCard h2 {
-            margin: 0 0 10px;
-            font-size: 18px;
-        }
-
-        .peliculaCard p {
-            margin: 5px 0;
-        }
-
-        .peliculaCard a {
-            display: inline-block;
-            margin: 8px 5px 0;
-            padding: 8px 12px;
-            background: #ff4747;
-            color: white;
-            text-decoration: none;
-            border-radius: 6px;
-            transition: background 0.3s ease;
-        }
-
-        .peliculaCard a:hover {
-            background: #e63939;
-        }
-    </style>
-
-    <h1>Peliculas</h1>
-    <div class="peliculasCards">
-        <?php
+    <?php
         $peliculas = [
             [
+                'id' => 1, 
                 'nombre' => 'The Shawshank Redemption',
                 'imagen' => 'https://m.media-amazon.com/images/M/MV5BMDAyY2FhYjctNDc5OS00MDNlLThiMGUtY2UxYWVkNGY2ZjljXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg',
                 'horarios' => '18:00, 20:30, 22:45',
@@ -104,6 +22,7 @@
                 'URLtrailer' => 'https://www.youtube.com/watch?v=NmzuHjWmXOc'
             ],
             [
+                'id' => 2, 
                 'nombre' => 'The Godfather',
                 'imagen' => 'https://m.media-amazon.com/images/M/MV5BNGEwYjgwOGQtYjg5ZS00Njc1LTk2ZGEtM2QwZWQ2NjdhZTE5XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg',
                 'horarios' => '17:45, 20:15, 22:50',
@@ -116,6 +35,7 @@
                 'URLtrailer' => 'https://www.youtube.com/watch?v=sY1S34973zA'
             ],
             [
+                'id' => 3, 
                 'nombre' => 'The Dark Knight',
                 'imagen' => 'https://m.media-amazon.com/images/M/MV5BMTMxNTMwODM0NF5BMl5BanBnXkFtZTcwODAyMTk2Mw@@._V1_.jpg',
                 'horarios' => '18:30, 21:00, 23:15',
@@ -128,6 +48,7 @@
                 'URLtrailer' => 'https://www.youtube.com/watch?v=EXeTwQWrcwY'
             ],
             [
+                'id' => 4, 
                 'nombre' => 'Schindler\'s List',
                 'imagen' => 'https://m.media-amazon.com/images/I/817R7RXH9PL._UF1000,1000_QL80_.jpg',
                 'horarios' => '19:00, 21:45',
@@ -140,6 +61,7 @@
                 'URLtrailer' => 'https://www.youtube.com/watch?v=gG22XNhtnoY'
             ],
             [
+                'id' => 5, 
                 'nombre' => '12 Angry Men',
                 'imagen' => 'https://upload.wikimedia.org/wikipedia/commons/b/b5/12_Angry_Men_%281957_film_poster%29.jpg',
                 'horarios' => '18:15, 20:45',
@@ -152,6 +74,7 @@
                 'URLtrailer' => 'https://www.youtube.com/watch?v=_13J_9B5jEk'
             ],
             [
+                'id' => 6, 
                 'nombre' => 'The Lord of the Rings: The Return of the King',
                 'imagen' => 'https://m.media-amazon.com/images/M/MV5BMTZkMjBjNWMtZGI5OC00MGU0LTk4ZTItODg2NWM3NTVmNWQ4XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg',
                 'horarios' => '17:30, 20:00, 22:45',
@@ -164,6 +87,7 @@
                 'URLtrailer' => 'https://www.youtube.com/watch?v=r5X-hFf6Bwo'
             ],
             [
+                'id' => 7, 
                 'nombre' => 'Pulp Fiction',
                 'imagen' => 'https://m.media-amazon.com/images/M/MV5BYTViYTE3ZGQtNDBlMC00ZTAyLTkyODMtZGRiZDg0MjA2YThkXkEyXkFqcGc@._V1_.jpg',
                 'horarios' => '19:15, 21:50, 00:10',
@@ -176,6 +100,7 @@
                 'URLtrailer' => 'https://www.youtube.com/watch?v=s7EdQ4FqbhY'
             ],
             [
+                'id' => 8, 
                 'nombre' => 'Fight Club',
                 'imagen' => 'https://m.media-amazon.com/images/M/MV5BOTgyOGQ1NDItNGU3Ny00MjU3LTg2YWEtNmEyYjBiMjI1Y2M5XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg',
                 'horarios' => '20:00, 22:30',
@@ -188,6 +113,7 @@
                 'URLtrailer' => 'https://www.youtube.com/watch?v=SUXWAEX2jlg'
             ],
             [
+                'id' => 9, 
                 'nombre' => 'Inception',
                 'imagen' => 'https://m.media-amazon.com/images/M/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@._V1_FMjpg_UX1000_.jpg',
                 'horarios' => '18:45, 21:15, 23:50',
@@ -200,6 +126,7 @@
                 'URLtrailer' => 'https://www.youtube.com/watch?v=YoHD9XEInc0'
             ],
             [
+                'id' => 10, 
                 'nombre' => 'Interstellar',
                 'imagen' => 'https://m.media-amazon.com/images/M/MV5BYzdjMDAxZGItMjI2My00ODA1LTlkNzItOWFjMDU5ZDJlYWY3XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg',
                 'horarios' => '19:00, 21:30',
@@ -212,20 +139,6 @@
                 'URLtrailer' => 'https://www.youtube.com/watch?v=zSWdZVtXT7E'
             ]
         ];
-
-        foreach($peliculas as $pelicula) {
-            echo '<div class="peliculaCard">';
-            echo '<img src="' . htmlspecialchars($pelicula['imagen']) . '" alt="' . htmlspecialchars($pelicula['nombre']) . '">';
-            
-            echo '<div class="details">';
-            echo '<h2>' . htmlspecialchars($pelicula['nombre']) . '</h2>';
-            echo '<p><strong>Horaris:</strong> ' . htmlspecialchars($pelicula['horarios']) . '</p>';
-            echo '<a href="trailer.php?pelicula=' . urlencode($pelicula['nombre']) . '">Veure tràiler</a>';
-            echo '<a href="detalles.php?pelicula=' . urlencode($pelicula['nombre']) . '">Veure més informació</a>';
-            echo '</div>';
-            echo '</div>';
-        }
-        ?>
-    </div>
+    ?>
 </body>
 </html>
