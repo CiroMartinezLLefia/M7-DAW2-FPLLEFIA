@@ -12,21 +12,23 @@
         include ('peliculas.php');
         $id = $_GET['idPelicula'];
 
-        echo $peliculas[$id]['nombre'];
-        echo '<br>';
-        echo $peliculas[$id]['horarios'];
-        echo '<br>';
-        echo $peliculas[$id]['sinopsis'];
-        echo '<br>';
-        echo $peliculas[$id]['duracion'];
-        echo '<br>';
-        echo $peliculas[$id]['director'];
-        echo '<br>';
-        echo $peliculas[$id]['actores'];
-        echo '<br>';
-        echo $peliculas[$id]['calificacion'];
-        echo '<br>';
-        echo $peliculas[$id]['genero'];
+        echo '<div class="detalles-container">';
+            echo '<img class="imgDetalles" src="' . htmlspecialchars($peliculas[$id]['imagen']) . '" alt="' . htmlspecialchars($peliculas[$id]['nombre']) . '">';
+
+            echo '<div class="infoDetalles">';
+                echo "<h2>" . $peliculas[$id]['nombre'] . "</h2>";
+                echo "<table border='1' cellpadding='5'>";
+                    echo "<tr><th>Sinopsis</th><td>" . $peliculas[$id]['sinopsis'] . "</td></tr>";
+                    echo "<tr><th>Duración</th><td>" . $peliculas[$id]['duracion'] . "</td></tr>";
+                    echo "<tr><th>Director</th><td>" . $peliculas[$id]['director'] . "</td></tr>";
+                    echo "<tr><th>Actores</th><td>" . $peliculas[$id]['actores'] . "</td></tr>";
+                    echo "<tr><th>Calificación</th><td>" . $peliculas[$id]['calificacion'] . "</td></tr>";
+                    echo "<tr><th>Género</th><td>" . $peliculas[$id]['genero'] . "</td></tr>";
+                    echo "<tr><th>Horarios</th><td>" . $peliculas[$id]['horarios'] . "</td></tr>";
+                echo "</table>";
+            echo "</div>";
+        echo "</div>";
+
     ?>
     </div>
 </body>

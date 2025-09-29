@@ -9,7 +9,7 @@
     <?php
         $peliculas = [
             [
-                'id' => 1, 
+                'id' => 0, 
                 'nombre' => 'The Shawshank Redemption',
                 'imagen' => 'https://m.media-amazon.com/images/M/MV5BMDAyY2FhYjctNDc5OS00MDNlLThiMGUtY2UxYWVkNGY2ZjljXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg',
                 'horarios' => '18:00, 20:30, 22:45',
@@ -22,7 +22,7 @@
                 'URLtrailer' => 'https://www.youtube.com/watch?v=NmzuHjWmXOc'
             ],
             [
-                'id' => 2, 
+                'id' => 1, 
                 'nombre' => 'The Godfather',
                 'imagen' => 'https://m.media-amazon.com/images/M/MV5BNGEwYjgwOGQtYjg5ZS00Njc1LTk2ZGEtM2QwZWQ2NjdhZTE5XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg',
                 'horarios' => '17:45, 20:15, 22:50',
@@ -35,7 +35,7 @@
                 'URLtrailer' => 'https://www.youtube.com/watch?v=sY1S34973zA'
             ],
             [
-                'id' => 3, 
+                'id' => 2, 
                 'nombre' => 'The Dark Knight',
                 'imagen' => 'https://m.media-amazon.com/images/M/MV5BMTMxNTMwODM0NF5BMl5BanBnXkFtZTcwODAyMTk2Mw@@._V1_.jpg',
                 'horarios' => '18:30, 21:00, 23:15',
@@ -48,7 +48,7 @@
                 'URLtrailer' => 'https://www.youtube.com/watch?v=EXeTwQWrcwY'
             ],
             [
-                'id' => 4, 
+                'id' => 3, 
                 'nombre' => 'Schindler\'s List',
                 'imagen' => 'https://m.media-amazon.com/images/I/817R7RXH9PL._UF1000,1000_QL80_.jpg',
                 'horarios' => '19:00, 21:45',
@@ -61,7 +61,7 @@
                 'URLtrailer' => 'https://www.youtube.com/watch?v=gG22XNhtnoY'
             ],
             [
-                'id' => 5, 
+                'id' => 4, 
                 'nombre' => '12 Angry Men',
                 'imagen' => 'https://upload.wikimedia.org/wikipedia/commons/b/b5/12_Angry_Men_%281957_film_poster%29.jpg',
                 'horarios' => '18:15, 20:45',
@@ -74,7 +74,7 @@
                 'URLtrailer' => 'https://www.youtube.com/watch?v=_13J_9B5jEk'
             ],
             [
-                'id' => 6, 
+                'id' => 5, 
                 'nombre' => 'The Lord of the Rings: The Return of the King',
                 'imagen' => 'https://m.media-amazon.com/images/M/MV5BMTZkMjBjNWMtZGI5OC00MGU0LTk4ZTItODg2NWM3NTVmNWQ4XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg',
                 'horarios' => '17:30, 20:00, 22:45',
@@ -87,7 +87,7 @@
                 'URLtrailer' => 'https://www.youtube.com/watch?v=r5X-hFf6Bwo'
             ],
             [
-                'id' => 7, 
+                'id' => 6, 
                 'nombre' => 'Pulp Fiction',
                 'imagen' => 'https://m.media-amazon.com/images/M/MV5BYTViYTE3ZGQtNDBlMC00ZTAyLTkyODMtZGRiZDg0MjA2YThkXkEyXkFqcGc@._V1_.jpg',
                 'horarios' => '19:15, 21:50, 00:10',
@@ -100,7 +100,7 @@
                 'URLtrailer' => 'https://www.youtube.com/watch?v=s7EdQ4FqbhY'
             ],
             [
-                'id' => 8, 
+                'id' => 7, 
                 'nombre' => 'Fight Club',
                 'imagen' => 'https://m.media-amazon.com/images/M/MV5BOTgyOGQ1NDItNGU3Ny00MjU3LTg2YWEtNmEyYjBiMjI1Y2M5XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg',
                 'horarios' => '20:00, 22:30',
@@ -113,7 +113,7 @@
                 'URLtrailer' => 'https://www.youtube.com/watch?v=SUXWAEX2jlg'
             ],
             [
-                'id' => 9, 
+                'id' => 8, 
                 'nombre' => 'Inception',
                 'imagen' => 'https://m.media-amazon.com/images/M/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@._V1_FMjpg_UX1000_.jpg',
                 'horarios' => '18:45, 21:15, 23:50',
@@ -126,7 +126,7 @@
                 'URLtrailer' => 'https://www.youtube.com/watch?v=YoHD9XEInc0'
             ],
             [
-                'id' => 10, 
+                'id' => 9, 
                 'nombre' => 'Interstellar',
                 'imagen' => 'https://m.media-amazon.com/images/M/MV5BYzdjMDAxZGItMjI2My00ODA1LTlkNzItOWFjMDU5ZDJlYWY3XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg',
                 'horarios' => '19:00, 21:30',
