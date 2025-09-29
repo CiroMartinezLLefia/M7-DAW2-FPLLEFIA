@@ -17,7 +17,12 @@
                 
                 echo '<div class="details">';
                 echo '<h2>' . htmlspecialchars($pelicula['nombre']) . '</h2>';
-                echo '<p><strong>Horaris:</strong> ' . htmlspecialchars($pelicula['horarios']) . '</p>';
+                echo '<p><strong>Horarios:</strong></p>';
+                echo '<ul>';
+                foreach ($pelicula['horarios'] as $horario) {
+                    echo '<li>' . htmlspecialchars($horario) . '</li>';
+                }
+                echo '</ul>';
                 echo '<a href="trailer.php?pelicula=' . urlencode($pelicula['nombre']) . '">Veure tràiler</a>';
                 echo '<a href="detalles.php?idPelicula=' . urlencode($pelicula['id']) . '">Veure més informació</a>';
                 echo '</div>';

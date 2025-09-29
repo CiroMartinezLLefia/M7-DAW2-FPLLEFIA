@@ -24,7 +24,11 @@
                     echo "<tr><th>Actores</th><td>" . $peliculas[$id]['actores'] . "</td></tr>";
                     echo "<tr><th>Calificación</th><td>" . $peliculas[$id]['calificacion'] . "</td></tr>";
                     echo "<tr><th>Género</th><td>" . $peliculas[$id]['genero'] . "</td></tr>";
-                    echo "<tr><th>Horarios</th><td>" . $peliculas[$id]['horarios'] . "</td></tr>";
+                    echo "<tr><th>Horarios</th><td><ul>";
+                    foreach ($peliculas[$id]['horarios'] as $horario) {
+                        echo "<li>" . htmlspecialchars($horario) . "</li>";
+                    }
+                    echo "</ul></td></tr>";
                 echo "</table>";
             echo "</div>";
         echo "</div>";
