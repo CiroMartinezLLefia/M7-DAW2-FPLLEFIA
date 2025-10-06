@@ -23,7 +23,7 @@
                     echo '<li>' . htmlspecialchars($horario) . '</li>';
                 }
                 echo '</ul>';
-                echo '<a href="trailer.php?pelicula=' . urlencode($pelicula['nombre']) . '">Veure tràiler</a>';
+                echo '<a href="trailer.php?idPelicula=' . urlencode($pelicula['id']) . '">Veure tràiler</a>';
                 echo '<a href="detalles.php?idPelicula=' . urlencode($pelicula['id']) . '">Veure més informació</a>';
                 echo '</div>';
                 echo '</div>';

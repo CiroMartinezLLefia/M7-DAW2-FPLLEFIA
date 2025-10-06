@@ -19,7 +19,7 @@
                 'actores' => 'Tim Robbins, Morgan Freeman, Bob Gunton',
                 'calificacion' => '9.3',
                 'genero' => 'Drama / Crimen',
-                'URLtrailer' => 'https://www.youtube.com/watch?v=NmzuHjWmXOc'
+                'URLtrailer' => 'https://www.youtube.com/embed/PLl99DlL6b4?si=sktEbCuYccS9gyQ4'
             ],
             [
                 'id' => 1, 
