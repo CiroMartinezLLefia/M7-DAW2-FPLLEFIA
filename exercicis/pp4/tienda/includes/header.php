@@ -1,3 +1,8 @@
+<?php
+        $nombre = $_GET['nombre'];
+        $img = $_GET['URL'];
+?>
+
 <header class="navbar navbar-expand-lg navbar-light bg-light mb-5">
   <div class="container-fluid d-flex justify-content-between">
     <!-- Logo -->
@@ -7,8 +12,8 @@
 
     <!-- Mensaje + Avatar -->
     <div class="d-flex align-items-center">
-      <h2 class="me-3 mb-0 px-4">¡Bienvenido ALUMNO!</h2>
-      <img src="avatar.png" alt="Avatar" class="rounded-circle" style="width: 50px; height: 50px;">
+      <h2 class="me-3 mb-0 px-4">¡Bienvenido <?php echo $nombre; ?>!</h2>
+      <img src="<?php echo $img; ?>" alt="Avatar" class="rounded-circle" style="width: 50px; height: 50px;">
     </div>
 
     <!-- Navegación -->

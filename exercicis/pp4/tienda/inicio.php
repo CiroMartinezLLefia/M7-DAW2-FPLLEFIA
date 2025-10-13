@@ -18,30 +18,30 @@
   </div>
 
   <div class="container">
-    <form class="row g-3">
+    <form class="row g-3" action="index.php" method="GET">
       <div class="col-md-6">
         <label for="nombre" class="form-label">Nombre</label>
-        <input type="text" class="form-control" id="nombre" placeholder="Tu nombre">
+        <input type="text" name="nombre" class="form-control" id="nombre" placeholder="Tu nombre">
       </div>
       <div class="col-md-6">
         <label for="apellidos" class="form-label">Apellidos</label>
-        <input type="text" class="form-control" id="apellidos" placeholder="Tus apellidos">
+        <input type="text" name="apellidos" class="form-control" id="apellidos" placeholder="Tus apellidos">
       </div>
       <div class="col-md-6">
         <label for="telefono" class="form-label">Número de teléfono</label>
-        <input type="tel" class="form-control" id="telefono" placeholder="Ej: 600123456">
+        <input type="tel" name="telefono" class="form-control" id="telefono" placeholder="Ej: 600123456">
       </div>
       <div class="col-md-6">
         <label for="dni" class="form-label">DNI</label>
-        <input type="text" class="form-control" id="dni" placeholder="12345678A">
+        <input type="text" name="dni" class="form-control" id="dni" placeholder="12345678A">
       </div>
       <div class="col-md-6">
         <label for="codigo" class="form-label">Código de socio</label>
-        <input type="text" class="form-control" id="codigo" placeholder="Código de socio">
+        <input type="text" name="codigo" class="form-control" id="codigo" placeholder="Código de socio">
       </div>
       <div class="col-md-6">
         <label for="email" class="form-label">Correo electrónico</label>
-        <input type="email" class="form-control" id="email" placeholder="tucorreo@example.com">
+        <input type="email" name="email" class="form-control" id="email" placeholder="tucorreo@example.com">
       </div>
       <div class="col-12 text-center mt-4">
         <button type="submit" class="btn btn-success">Continuar</button>
@@ -53,6 +53,10 @@
 <!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+I/RH9sENBO0LRn5q+8nbTov4+1p"
-        crossorigin="anonymous"></script>
+        crossorigin="anonymous">
+</script>
+
+<?php include 'includes/funciones.php';?>
+
 </body>
 </html>

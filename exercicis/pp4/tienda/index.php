@@ -10,8 +10,7 @@
 </head>
 <body>
 
-<?php include 'includes/header.php'; ?>
-
+<?php include 'includes/header.php';?>
 <div class="container my-5">
   <h2 class="text-center mb-4">Productos disponibles</h2>
 
@@ -32,12 +31,6 @@
         <td>Lácteos</td>
         <td>Disponible</td>
       </tr>
-      <tr>
-        <td>Pan Integral</td>
-        <td>1,00 €</td>
-        <td>Panadería</td>
-        <td>Disponible</td>
-      </tr>
     </tbody>
   </table>
 
@@ -56,9 +49,9 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
         </div>
         <div class="modal-body">
-          <p><strong>Nombre:</strong> Juan Pérez</p>
-          <p><strong>Teléfono:</strong> 600123456</p>
-          <p><strong>Email:</strong> juanperez@example.com</p>
+          <p><strong>Nombre:</strong><?php echo $nombre; ?></p>
+          <p><strong>Teléfono:</strong><?php echo $telefono; ?></p>
+          <p><strong>Email:</strong><?php echo $email; ?></p>
         </div>
       </div>
     </div>
@@ -71,6 +64,10 @@
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+I/RH9sENBO0LRn5q+8nbTov4+1p"
-        crossorigin="anonymous"></script>
+        crossorigin="anonymous">
+</script>
+
+<?php include 'includes/funciones.php';?>
+
 </body>
 </html>
