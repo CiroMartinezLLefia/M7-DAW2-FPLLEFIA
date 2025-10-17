@@ -8,7 +8,7 @@
 </head>
 <body>
     <?php
-    include_once 'inc/header.php'
+    include_once 'inc/header.php';
     ?>
 
     <main>
@@ -16,14 +16,14 @@
             <?php
                 include_once 'data.php';
 
-                foreach($noticas as $noticia)
+                foreach($noticias as $noticia)
                 {
                     echo '<article class="news-item>';
-                    echo '<h2> .  . </h2>';
-                    echo '<img src=" .  . " alt="">';
-                    echo '<p> .  . </p>';
-                    echo '<p> .  . </p>';
-                    echo '<p> .  . </p>';
+                    echo '<h2>' . htmlspecialchars($noticia['title']) . '</h2>';
+                    echo '<img src="' . htmlspecialchars($noticia['image']) . '" alt="">';
+                    echo '<p>' . htmlspecialchars($noticia['content']) . '</p>';
+                    echo '<p>' . htmlspecialchars($noticia['date']) . '</p>';
+                    echo '<p>' . htmlspecialchars($noticia['category']) . '</p>';
                     echo '</article>';
                 }
             ?>            
