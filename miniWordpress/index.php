@@ -2,14 +2,12 @@
 session_start();
 include_once 'data.php';
 
-// 🧹 Borrar todas las noticias
 if (isset($_GET['clear'])) {
     unset($_SESSION['noticias']);
     header('Location: index.php');
     exit;
 }
 
-// 🗑️ Borrar una noticia específica
 if (isset($_GET['delete'])) {
     $index = intval($_GET['delete']);
     if (isset($_SESSION['noticias'][$index])) {
@@ -20,12 +18,10 @@ if (isset($_GET['delete'])) {
     exit;
 }
 
-// 📦 Inicializar sesión con data.php si está vacía
 if (!isset($_SESSION['noticias'])) {
     $_SESSION['noticias'] = $noticias;
 }
 
-// ✍️ Añadir una nueva noticia (viene del form.php)
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $title = $_POST['title'];
     $content = $_POST['content'];
@@ -49,7 +45,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         ];
     }
 
-    // 🚀 Evitar reenvío de formulario
     header('Location: index.php');
     exit;
 }
