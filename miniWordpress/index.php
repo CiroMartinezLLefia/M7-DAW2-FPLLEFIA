@@ -10,9 +10,10 @@ if (isset($_GET['clear'])) {
 
 if (isset($_GET['delete'])) {
     $index = intval($_GET['delete']);
-    if (isset($_SESSION['noticias'][$index])) {
+    if (isset($_SESSION['noticias'][$index])) 
+    {
         unset($_SESSION['noticias'][$index]);
-        $_SESSION['noticias'] = array_values($_SESSION['noticias']); // reindexar
+        $_SESSION['noticias'] = array_values($_SESSION['noticias']);
     }
     header('Location: index.php');
     exit;
