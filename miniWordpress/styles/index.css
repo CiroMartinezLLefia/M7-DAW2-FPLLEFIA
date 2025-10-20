@@ -1,7 +1,169 @@
-body
-{
-    font-family: arial, sans-serif;
+/* ====== Reset & Base Styles ====== */
+* {
     margin: 0;
     padding: 0;
-    background-color: #428082;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Roboto, Arial, sans-serif;
+    background-color: #f7f8fa;
+    color: #222;
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ====== Header & Footer ====== */
+header, footer {
+    background-color: #111;
+    color: #fff;
+    padding: 1.5rem 2rem;
+    text-align: center;
+}
+
+header h1, footer p {
+    margin: 0;
+}
+
+footer {
+    margin-top: auto; /* Hace que el footer siempre esté abajo */
+}
+
+/* ====== Main Layout ====== */
+main {
+    flex: 1;
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* ====== News Grid ====== */
+.news-grid-display {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+/* ====== News Card ====== */
+.news-item {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    overflow: hidden;
+    transition: transform 0.2s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    position: relative; /* Para posicionar el botón */
+}
+
+.news-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+}
+
+.news-item img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.news-item h2 {
+    font-size: 1.4rem;
+    color: #111;
+    margin: 1rem;
+}
+
+.news-item p {
+    margin: 0 1rem 0.5rem 1rem;
+}
+
+.news-item p:last-child {
+    font-size: 0.9rem;
+    color: #555;
+}
+
+/* ====== Delete Button Mejorado ====== */
+.delete-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #ff4d4f;
+    color: #fff !important;
+    padding: 0.4rem 0.8rem;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 0.9rem;
+    transition: background-color 0.2s ease;
+}
+
+.delete-btn:hover {
+    background-color: #e04344;
+}
+
+/* ====== Form Styles ====== */
+form {
+    background: #fff;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+    max-width: 600px;
+    margin: 2rem auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+form label {
+    font-weight: bold;
+    margin-bottom: 0.3rem;
+}
+
+form input[type="text"],
+form input[type="date"],
+form textarea {
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+}
+
+form button {
+    padding: 0.7rem 1rem;
+    border-radius: 5px;
+    border: none;
+    background-color: #111;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+form button:hover {
+    background-color: #333;
+}
+
+/* ====== Navigation Links ====== */
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 0.5rem;
+}
+
+nav a {
+    color: #f7f8fa;
+    font-size: 1rem;
+    font-weight: bold;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+nav a:hover {
+    color: #ffcc00;
 }
