@@ -3,6 +3,8 @@
     <nav>
         <ul>
             <?php
+
+            
                 if (!true)
                 {
                     echo '<li><a href="login.php">Login</a></li>';

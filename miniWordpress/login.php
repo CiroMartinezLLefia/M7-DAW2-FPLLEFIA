@@ -12,7 +12,6 @@ session_start();
 </head>
 <body>
     <?php include_once 'inc/header.php'; ?>
-
     <main>
         <form action="index.php" method="POST">
             <label for="username">Username:</label>
