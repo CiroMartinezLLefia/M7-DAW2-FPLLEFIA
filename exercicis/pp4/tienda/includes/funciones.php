@@ -7,13 +7,17 @@
         $telefono = $_GET['telefono'];
         $img = $_GET['URL'];
 
-        <?php include 'includes/productos.php';?>
+        <?php include 'includes/data/productos.php';?>
         
-        function generarTablaProductos(producto)
+        function generarTablaProductos()
         {
-                $productos.producto
+                foreach (producto in $productos)
+                {
+                        <?php echo "TEST"; ?>
+                }
         }
-
+        
+        generarTablaProductos();
         /* Recibe un array de productos y genera una tabla con las siguientes columnas: 
         Nombre del producto (la primera letra en mayúscula) 
         Precio (formateado con number_format ) 
