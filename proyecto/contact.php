@@ -36,7 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $errors['message'] = 'El mensaje debe tener al menos 10 caracteres.';
     }
     
-    // Guardar en base de datos
+    // Guardar en base de datos y enviar email
     if (empty($errors)) {
         $pdo = getDBConnection();
         
@@ -47,6 +47,66 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     VALUES (?, ?, ?, ?, NOW())
                 ");
                 $stmt->execute([$name, $email, $subject, $message]);
+                
+                // Enviar email de notificación
+                $to = 'martinezmartinciro@fpllefia.com';
+                $emailSubject = '[GameZone Contacto] ' . ($subject ?: 'Nuevo mensaje');
+                
+                $emailBody = "
+                    <html>
+                    <head>
+                        <style>
+                            body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
+                            .container { max-width: 600px; margin: 0 auto; padding: 20px; }
+                            .header { background: linear-gradient(135deg, #6366f1, #8b5cf6); color: white; padding: 20px; border-radius: 8px 8px 0 0; }
+                            .content { background: #f9fafb; padding: 20px; border: 1px solid #e5e7eb; }
+                            .field { margin-bottom: 15px; }
+                            .label { font-weight: bold; color: #6366f1; }
+                            .footer { background: #1f2937; color: #9ca3af; padding: 15px; border-radius: 0 0 8px 8px; font-size: 12px; }
+                        </style>
+                    </head>
+                    <body>
+                        <div class='container'>
+                            <div class='header'>
+                                <h2 style='margin:0;'>🎮 Nuevo mensaje de contacto</h2>
+                            </div>
+                            <div class='content'>
+                                <div class='field'>
+                                    <span class='label'>Nombre:</span><br>
+                                    " . htmlspecialchars($name) . "
+                                </div>
+                                <div class='field'>
+                                    <span class='label'>Email:</span><br>
+                                    <a href='mailto:" . htmlspecialchars($email) . "'>" . htmlspecialchars($email) . "</a>
+                                </div>
+                                <div class='field'>
+                                    <span class='label'>Asunto:</span><br>
+                                    " . htmlspecialchars($subject ?: 'Sin asunto') . "
+                                </div>
+                                <div class='field'>
+                                    <span class='label'>Mensaje:</span><br>
+                                    " . nl2br(htmlspecialchars($message)) . "
+                                </div>
+                            </div>
+                            <div class='footer'>
+                                Enviado desde GameZone · " . date('d/m/Y H:i') . "
+                            </div>
+                        </div>
+                    </body>
+                    </html>
+                ";
+                
+                $headers = [
+                    'MIME-Version: 1.0',
+                    'Content-type: text/html; charset=UTF-8',
+                    'From: GameZone <noreply@gamezone.com>',
+                    'Reply-To: ' . $email,
+                    'X-Mailer: PHP/' . phpversion()
+                ];
+                
+                // Enviar email
+                @mail($to, $emailSubject, $emailBody, implode("\r\n", $headers));
+                
                 $success = true;
                 
                 // Limpiar formulario

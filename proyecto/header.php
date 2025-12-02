@@ -60,7 +60,7 @@ $currentPage = basename($_SERVER['PHP_SELF'], '.php');
             <!-- Usuario logueado -->
             <div class="dropdown">
               <button class="btn btn-link text-decoration-none dropdown-toggle user-menu p-0" type="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                <img src="assets/img/avatars/<?= e($currentUser['avatar']) ?>" alt="Avatar" class="user-avatar" onerror="this.src='assets/img/avatars/default-avatar.png'">
+                <img src="assets/img/avatars/<?= e($currentUser['avatar']) ?>" alt="Avatar" class="user-avatar" onerror="this.src='assets/img/avatars/default-avatar.svg'">
                 <span class="text-light d-none d-md-inline"><?= e($currentUser['display_name']) ?></span>
               </button>
               <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">

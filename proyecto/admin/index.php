@@ -261,11 +261,11 @@ $currentUser = getCurrentUser();
                 <?php if (!empty($recentUsers)): ?>
                   <?php foreach ($recentUsers as $user): ?>
                   <div class="list-group-item bg-transparent border-subtle d-flex align-items-center gap-3 px-0">
-                    <img src="../assets/img/avatars/<?= e($user['avatar'] ?: 'default-avatar.png') ?>" 
+                    <img src="../assets/img/avatars/<?= e($user['avatar'] ?: 'default-avatar.svg') ?>" 
                          alt="<?= e($user['username']) ?>"
                          class="rounded-circle"
                          width="40" height="40"
-                         onerror="this.src='../assets/img/avatars/default-avatar.png'">
+                         onerror="this.src='../assets/img/avatars/default-avatar.svg'">
                     <div class="flex-grow-1">
                       <div class="fw-bold"><?= e($user['display_name'] ?: $user['username']) ?></div>
                       <small class="text-muted"><?= e($user['email']) ?></small>

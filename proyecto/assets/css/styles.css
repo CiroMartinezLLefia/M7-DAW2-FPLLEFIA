@@ -979,6 +979,17 @@ body {
   border-radius: var(--radius);
   padding: 1.25rem;
   margin-bottom: 1rem;
+  transition: var(--transition);
+}
+
+.comment:hover {
+  border-color: rgba(99, 102, 241, 0.2);
+}
+
+.comment-reply {
+  background: rgba(255, 255, 255, 0.02);
+  border-left: 3px solid var(--primary);
+  margin-top: 0.75rem;
 }
 
 .comment-header {
@@ -992,6 +1003,12 @@ body {
   width: 40px;
   height: 40px;
   border-radius: 50%;
+  object-fit: cover;
+}
+
+.comment-reply .comment-header img {
+  width: 32px;
+  height: 32px;
 }
 
 .comment-author {
@@ -1002,11 +1019,51 @@ body {
 .comment-date {
   font-size: 0.85rem;
   color: var(--muted);
+  margin-left: 0.5rem;
 }
 
 .comment-content {
   color: var(--text-secondary);
   line-height: 1.6;
+}
+
+.comment-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.comment-actions .btn-link {
+  text-decoration: none;
+  font-size: 0.85rem;
+}
+
+.comment-actions .btn-link:hover {
+  color: var(--primary) !important;
+}
+
+.reply-form {
+  background: rgba(99, 102, 241, 0.05);
+  border-radius: var(--radius);
+  padding: 1rem;
+  border: 1px solid rgba(99, 102, 241, 0.1);
+}
+
+.reply-form textarea {
+  background: var(--bg-2);
+  border-color: rgba(255, 255, 255, 0.1);
+  color: var(--text);
+  resize: none;
+}
+
+.reply-form textarea:focus {
+  background: var(--bg-2);
+  border-color: var(--primary);
+  color: var(--text);
+  box-shadow: 0 0 0 3px var(--primary-glow);
 }
 
 /* =====================================================

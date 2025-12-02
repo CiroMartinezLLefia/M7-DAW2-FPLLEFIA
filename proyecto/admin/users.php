@@ -163,9 +163,9 @@ $totalPages = ceil($totalUsers / $perPage);
               <tr>
                 <td>
                   <div class="d-flex align-items-center gap-2">
-                    <img src="../assets/img/avatars/<?= e($user['avatar'] ?: 'default-avatar.png') ?>" 
+                    <img src="../assets/img/avatars/<?= e($user['avatar'] ?: 'default-avatar.svg') ?>" 
                          class="rounded-circle" width="32" height="32"
-                         onerror="this.src='../assets/img/avatars/default-avatar.png'">
+                         onerror="this.src='../assets/img/avatars/default-avatar.svg'">
                     <div>
                       <div class="fw-bold"><?= e($user['display_name'] ?: $user['username']) ?></div>
                       <small class="text-muted">@<?= e($user['username']) ?></small>

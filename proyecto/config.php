@@ -181,7 +181,7 @@ function getCurrentUser(): ?array {
         'email' => $_SESSION['email'] ?? '',
         'role' => $_SESSION['role'] ?? ROLE_USER,
         'display_name' => $_SESSION['display_name'] ?? $_SESSION['username'] ?? 'Usuario',
-        'avatar' => $_SESSION['avatar'] ?? 'default-avatar.png'
+        'avatar' => $_SESSION['avatar'] ?? 'default-avatar.svg'
     ];
 }
 

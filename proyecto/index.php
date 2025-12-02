@@ -160,9 +160,9 @@ if ($pdo) {
                 <p class="card-text"><?= e(truncateText($news['summary'] ?: strip_tags($news['content']), 120)) ?></p>
                 <div class="card-meta">
                   <div class="author">
-                    <img src="assets/img/avatars/<?= e($news['author_avatar'] ?: 'default-avatar.png') ?>" 
+                    <img src="assets/img/avatars/<?= e($news['author_avatar'] ?: 'default-avatar.svg') ?>" 
                          alt="<?= e($news['author_name']) ?>"
-                         onerror="this.src='assets/img/avatars/default-avatar.png'">
+                         onerror="this.src='assets/img/avatars/default-avatar.svg'">
                     <span><?= e($news['author_name']) ?></span>
                   </div>
                   <span><i class="bi bi-calendar3 me-1"></i><?= formatDate($news['published_at']) ?></span>
@@ -202,9 +202,9 @@ if ($pdo) {
                   <p class="card-text"><?= e(truncateText($news['summary'] ?: strip_tags($news['content']), 100)) ?></p>
                   <div class="card-meta">
                     <div class="author">
-                      <img src="assets/img/avatars/<?= e($news['author_avatar'] ?: 'default-avatar.png') ?>" 
+                      <img src="assets/img/avatars/<?= e($news['author_avatar'] ?: 'default-avatar.svg') ?>" 
                            alt="<?= e($news['author_name']) ?>"
-                           onerror="this.src='assets/img/avatars/default-avatar.png'">
+                           onerror="this.src='assets/img/avatars/default-avatar.svg'">
                       <span><?= e($news['author_name']) ?></span>
                     </div>
                     <span><i class="bi bi-eye me-1"></i><?= number_format($news['views']) ?></span>
@@ -228,7 +228,7 @@ if ($pdo) {
                   <p class="card-text">Nintendo ha confirmado oficialmente que el sucesor de Nintendo Switch llegará durante el año fiscal 2025.</p>
                   <div class="card-meta">
                     <div class="author">
-                      <img src="assets/img/avatars/default-avatar.png" alt="Editor">
+                      <img src="assets/img/avatars/default-avatar.svg" alt="Editor">
                       <span>Editor</span>
                     </div>
                     <span><i class="bi bi-calendar3 me-1"></i>2 Dic, 2025</span>
@@ -249,7 +249,7 @@ if ($pdo) {
                   <p class="card-text">Rockstar Games ha confirmado que Grand Theft Auto VI llegará en otoño de 2025 exclusivamente para consolas.</p>
                   <div class="card-meta">
                     <div class="author">
-                      <img src="assets/img/avatars/default-avatar.png" alt="Editor">
+                      <img src="assets/img/avatars/default-avatar.svg" alt="Editor">
                       <span>Editor</span>
                     </div>
                     <span><i class="bi bi-calendar3 me-1"></i>1 Dic, 2025</span>
@@ -270,7 +270,7 @@ if ($pdo) {
                   <p class="card-text">Square Enix entrega la que posiblemente sea la mejor entrega de la saga en décadas.</p>
                   <div class="card-meta">
                     <div class="author">
-                      <img src="assets/img/avatars/default-avatar.png" alt="Editor">
+                      <img src="assets/img/avatars/default-avatar.svg" alt="Editor">
                       <span>Editor</span>
                     </div>
                     <span><i class="bi bi-calendar3 me-1"></i>30 Nov, 2025</span>

@@ -82,16 +82,18 @@ if ($pdo) {
 // Procesar nuevo comentario
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isLoggedIn()) {
     $content = trim($_POST['comment'] ?? '');
+    $parentId = !empty($_POST['parent_id']) ? (int)$_POST['parent_id'] : null;
     
     if (!empty($content) && $pdo) {
         try {
             $stmt = $pdo->prepare("
-                INSERT INTO comments (user_id, news_id, content, is_approved, created_at)
-                VALUES (?, ?, ?, 1, NOW())
+                INSERT INTO comments (user_id, news_id, parent_id, content, is_approved, created_at)
+                VALUES (?, ?, ?, ?, 1, NOW())
             ");
             $stmt->execute([
                 getCurrentUser()['id'],
                 $news['id'],
+                $parentId,
                 $content
             ]);
             
@@ -103,6 +105,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isLoggedIn()) {
         }
     }
 }
+
+// Función para organizar comentarios en árbol
+function buildCommentTree($comments, $parentId = null) {
+    $branch = [];
+    foreach ($comments as $comment) {
+        if ($comment['parent_id'] == $parentId) {
+            $children = buildCommentTree($comments, $comment['id']);
+            if ($children) {
+                $comment['replies'] = $children;
+            }
+            $branch[] = $comment;
+        }
+    }
+    return $branch;
+}
+
+// Organizar comentarios en estructura de árbol
+$commentTree = buildCommentTree($comments);
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -161,11 +181,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isLoggedIn()) {
         
         <!-- Autor -->
         <div class="d-flex align-items-center gap-3 mt-4 p-3 rounded-lg" style="background: var(--bg-card);">
-          <img src="assets/img/avatars/<?= e($news['author_avatar'] ?: 'default-avatar.png') ?>" 
+          <img src="assets/img/avatars/<?= e($news['author_avatar'] ?: 'default-avatar.svg') ?>" 
                alt="<?= e($news['author_name']) ?>"
                class="rounded-circle"
                width="50" height="50"
-               onerror="this.src='assets/img/avatars/default-avatar.png'">
+               onerror="this.src='assets/img/avatars/default-avatar.svg'">
           <div>
             <div class="fw-bold"><?= e($news['author_name']) ?></div>
             <small class="text-muted">Autor</small>
@@ -221,9 +241,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isLoggedIn()) {
       <section class="comments-section" id="comments">
         <h3><i class="bi bi-chat-dots me-2"></i>Comentarios (<?= count($comments) ?>)</h3>
         
-        <!-- Formulario de comentario -->
+        <!-- Formulario de comentario principal -->
         <?php if (isLoggedIn()): ?>
-        <form method="POST" class="mb-4">
+        <form method="POST" class="comment-form mb-4" id="main-comment-form">
+          <input type="hidden" name="parent_id" value="">
           <div class="mb-3">
             <textarea name="comment" class="form-control" rows="3" placeholder="Escribe tu comentario..." required></textarea>
           </div>
@@ -238,28 +259,111 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isLoggedIn()) {
         </div>
         <?php endif; ?>
         
-        <!-- Lista de comentarios -->
-        <?php if (!empty($comments)): ?>
-          <?php foreach ($comments as $comment): ?>
-          <div class="comment">
+        <!-- Lista de comentarios con respuestas -->
+        <?php if (!empty($commentTree)): ?>
+          <?php 
+          // Función recursiva para mostrar comentarios
+          function renderComment($comment, $depth = 0, $maxDepth = 3) {
+              $isReply = $depth > 0;
+              $canReply = $depth < $maxDepth;
+              $marginLeft = min($depth * 2, 6); // máximo 6rem de margen
+          ?>
+          <div class="comment <?= $isReply ? 'comment-reply' : '' ?>" style="<?= $isReply ? "margin-left: {$marginLeft}rem;" : '' ?>" id="comment-<?= $comment['id'] ?>">
             <div class="comment-header">
-              <img src="assets/img/avatars/<?= e($comment['avatar'] ?: 'default-avatar.png') ?>" 
+              <img src="assets/img/avatars/<?= e($comment['avatar'] ?: 'default-avatar.svg') ?>" 
                    alt="<?= e($comment['display_name'] ?: $comment['username']) ?>"
-                   onerror="this.src='assets/img/avatars/default-avatar.png'">
-              <div>
+                   onerror="this.src='assets/img/avatars/default-avatar.svg'">
+              <div class="flex-grow-1">
                 <span class="comment-author"><?= e($comment['display_name'] ?: $comment['username']) ?></span>
-                <span class="comment-date"><?= formatDate($comment['created_at'], 'd M Y, H:i') ?></span>
+                <span class="comment-date"><?= timeAgo($comment['created_at']) ?></span>
               </div>
+              <?php if ($isReply): ?>
+              <span class="badge bg-secondary bg-opacity-25 text-secondary small">
+                <i class="bi bi-reply-fill me-1"></i>Respuesta
+              </span>
+              <?php endif; ?>
             </div>
             <div class="comment-content">
               <?= nl2br(e($comment['content'])) ?>
             </div>
+            <div class="comment-actions">
+              <?php if (isLoggedIn() && $canReply): ?>
+              <button type="button" class="btn btn-link btn-sm text-muted p-0 reply-btn" 
+                      data-comment-id="<?= $comment['id'] ?>"
+                      data-author="<?= e($comment['display_name'] ?: $comment['username']) ?>">
+                <i class="bi bi-reply me-1"></i>Responder
+              </button>
+              <?php endif; ?>
+              <span class="text-muted small">
+                <i class="bi bi-heart me-1"></i><?= $comment['likes_count'] ?? 0 ?>
+              </span>
+            </div>
+            
+            <!-- Formulario de respuesta (oculto por defecto) -->
+            <?php if (isLoggedIn() && $canReply): ?>
+            <form method="POST" class="reply-form mt-3" id="reply-form-<?= $comment['id'] ?>" style="display: none;">
+              <input type="hidden" name="parent_id" value="<?= $comment['id'] ?>">
+              <div class="d-flex gap-2">
+                <textarea name="comment" class="form-control form-control-sm" rows="2" 
+                          placeholder="Responder a <?= e($comment['display_name'] ?: $comment['username']) ?>..." required></textarea>
+                <div class="d-flex flex-column gap-1">
+                  <button type="submit" class="btn btn-primary btn-sm">
+                    <i class="bi bi-send"></i>
+                  </button>
+                  <button type="button" class="btn btn-outline-secondary btn-sm cancel-reply">
+                    <i class="bi bi-x"></i>
+                  </button>
+                </div>
+              </div>
+            </form>
+            <?php endif; ?>
+            
+            <!-- Respuestas anidadas -->
+            <?php if (!empty($comment['replies'])): ?>
+              <?php foreach ($comment['replies'] as $reply): ?>
+                <?php renderComment($reply, $depth + 1, $maxDepth); ?>
+              <?php endforeach; ?>
+            <?php endif; ?>
           </div>
-          <?php endforeach; ?>
+          <?php
+          }
+          
+          // Renderizar comentarios principales
+          foreach ($commentTree as $comment) {
+              renderComment($comment);
+          }
+          ?>
         <?php else: ?>
           <p class="text-muted">Aún no hay comentarios. ¡Sé el primero en comentar!</p>
         <?php endif; ?>
       </section>
+      
+      <!-- Script para manejar respuestas -->
+      <script>
+        document.addEventListener('DOMContentLoaded', function() {
+          // Mostrar formulario de respuesta
+          document.querySelectorAll('.reply-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+              const commentId = this.dataset.commentId;
+              const form = document.getElementById('reply-form-' + commentId);
+              
+              // Ocultar otros formularios
+              document.querySelectorAll('.reply-form').forEach(f => f.style.display = 'none');
+              
+              // Mostrar este formulario
+              form.style.display = 'block';
+              form.querySelector('textarea').focus();
+            });
+          });
+          
+          // Cancelar respuesta
+          document.querySelectorAll('.cancel-reply').forEach(btn => {
+            btn.addEventListener('click', function() {
+              this.closest('.reply-form').style.display = 'none';
+            });
+          });
+        });
+      </script>
       
       <!-- Noticias relacionadas -->
       <?php if (!empty($relatedNews)): ?>

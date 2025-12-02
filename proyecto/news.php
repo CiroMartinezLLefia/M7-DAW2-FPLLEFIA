@@ -156,9 +156,9 @@ $categoryName = $category ? ucfirst(str_replace('-', ' ', $category)) : 'Todas l
                 <p class="card-text"><?= e(truncateText($item['summary'] ?: strip_tags($item['content']), 120)) ?></p>
                 <div class="card-meta">
                   <div class="author">
-                    <img src="assets/img/avatars/<?= e($item['author_avatar'] ?: 'default-avatar.png') ?>" 
+                    <img src="assets/img/avatars/<?= e($item['author_avatar'] ?: 'default-avatar.svg') ?>" 
                          alt="<?= e($item['author_name']) ?>"
-                         onerror="this.src='assets/img/avatars/default-avatar.png'">
+                         onerror="this.src='assets/img/avatars/default-avatar.svg'">
                     <span><?= e($item['author_name']) ?></span>
                   </div>
                   <span><?= formatDate($item['published_at']) ?></span>
