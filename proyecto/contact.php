@@ -99,13 +99,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $headers = [
                     'MIME-Version: 1.0',
                     'Content-type: text/html; charset=UTF-8',
-                    'From: GameZone <noreply@gamezone.com>',
+                    'From: gestornotasuab@alwaysdata.net',
                     'Reply-To: ' . $email,
                     'X-Mailer: PHP/' . phpversion()
                 ];
                 
                 // Enviar email
-                @mail($to, $emailSubject, $emailBody, implode("\r\n", $headers));
+                mail($to, $emailSubject, $emailBody, implode("\r\n", $headers));
                 
                 $success = true;
                 
