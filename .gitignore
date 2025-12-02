@@ -7,6 +7,10 @@
 .env
 *.env.local
 
+# Logs
+logs/
+*.log
+
 # User-specific files
 *.suo
 *.user
